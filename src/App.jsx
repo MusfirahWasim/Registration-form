@@ -53,12 +53,19 @@ export default function App() {
                 <h1 className="text-2xl font-semibold text-stone-900 tracking-tight">Registered Users</h1>
               </div>
             </div>
-            
-            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
-              {users.map((user, i) => (
-                <UserCard key={user.id} user={user} index={i} />
-              ))}
-            </div>
+
+            {users.length === 0 ? (
+              <div className="bg-white rounded-2xl border border-stone-100 border-dashed py-20 flex flex-col items-center justify-center text-center">
+                <p className="text-sm font-medium text-stone-500">No users yet</p>
+                <p className="text-xs text-stone-400 mt-1">Register the first one</p>
+              </div>
+            ) : (
+              <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
+                {users.map((user, i) => (
+                  <UserCard key={user.id} user={user} index={i} />
+                ))}
+              </div>
+            )}
           
           </div>
         </div>
